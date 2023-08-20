@@ -1,0 +1,111 @@
+{
+    "GShotel": [
+      {
+        "item": "chicken Briyani",
+        "price": 250,
+        "id": 1
+      },
+      {
+        "item": "Mutton Briyani",
+        "price": 280,
+        "id": 2
+      },
+      {
+        "item": "Chicken Wings",
+        "price": 180,
+        "id": 3
+      },
+      {
+        "item": "Fish Fry",
+        "price": 140,
+        "id": 4
+      },
+      {
+        "item": "Grill Chicken ( full )",
+        "price": 380,
+        "id": 5
+      },
+      {
+        "item": "Crab Briyani",
+        "price": 200,
+        "id": 6
+      },
+      {
+        "item": "Prawn Briyani",
+        "price": 220,
+        "id": 7
+      },
+      {
+        "item": "Chicken Kasata",
+        "price": 160,
+        "id": 8
+      },
+      {
+        "item": "Dakilo",
+        "price": 120,
+        "id": 9
+      },
+      {
+        "item": "kabab",
+        "price": 150,
+        "id": 10
+      }
+    ],
+    "Haja hotel": [
+      {
+        "item": "chicken Briyani",
+        "price": 200,
+        "id": 1
+      },
+      {
+        "item": "Mutton Briyani",
+        "price": 300,
+        "id": 2
+      },
+      {
+        "item": "Chicken Wings",
+        "price": 200,
+        "id": 3
+      },
+      {
+        "item": "Fish Fry",
+        "price": 180,
+        "id": 4
+      },
+      {
+        "item": "Grill Chicken ( full )",
+        "price": 380,
+        "id": 5
+      },
+      {
+        "item": "Crab Briyani",
+        "price": 200,
+        "id": 6
+      },
+      {
+        "item": "Prawn Briyani",
+        "price": 220,
+        "id": 7
+      },
+      {
+        "item": "Chicken Kasata",
+        "price": 160,
+        "id": 8
+      },
+      {
+        "item": "Dakilo",
+        "price": 120,
+        "id": 9
+      },
+      {
+        "item": "kabab",
+        "price": 150,
+        "id": 10
+      }
+    ]
+  }
+
+
+
+
+  

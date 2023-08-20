@@ -1,0 +1,300 @@
+FILE NAME : Storage_del.robot
+
+
+*** Settings ***
+Documentation     Checks for setup to work correctly. Jira-ID: AFHS-5427
+#Test Teardown     Logout Azure Portal and close Browser
+Force Tags        AFHS-5427
+
+###Author: Abdi Noor ###
+Library  SeleniumLibrary
+Library  Process
+Library  OperatingSystem
+Library  Collections
+Library  RequestsLibrary
+Library  validation.py
+Library  AzureStorageAccount.py
+
+
+Resource  Variables.robot
+Resource  Locators.robot
+Resource  CommonKeywords.robot
+
+
+*** Variables ***
+${HSDI_M_SACnt}  0
+${DocsperaFile1}=  a1f5e75f-2aff-4525-b439-437f3d7ba6af
+${DownloadDir}=  ${CURDIR}/downloads_robot/
+${BaseURL}=  https://filescanner-api.api-apd-afl.thesurgicalnet.com
+@{item}
+${Container_list}
+*** Test Cases ***
+
+Validate Docspera Storage account delete
+
+        nadsdevadlvelysdl
+        nadsdevadlvelysdsperadl
+
+*** Keywords ***
+
+nadsdevadlvelysdl
+
+    ${json}  Get file   ../dsp_daa_fhir_layering/robot-framework/test-suites/AzureStorageFileDelete.json
+    ${Azstg}  Evaluate  json.loads('''${json}''')  json
+    ${container_length}=  Get Length  ${Azstg["stg1"]["containers"]}
+    Log to the console    000${container_length}
+
+    FOR  ${container}  IN RANGE  ${container_length}
+        Log to the console    111${container}
+        Log to the console    222${Azstg["stg1"]["containers"][${container}]}
+        batch_delete_blobs_sample   ${Azstg["stg1"]["connection_string"]}   ${Azstg["stg1"]["containers"][${container}]}
+    END
+
+nadsdevadlvelysdsperadl
+
+    ${json}  Get file   ../dsp_daa_fhir_layering/robot-framework/test-suites/AzureStorageFileDelete.json
+    ${Azstg}  Evaluate  json.loads('''${json}''')  json
+    ${container_length}=  Get Length  ${Azstg["stg2"]["containers"]}
+    Log to the console    999${container_length}
+
+    FOR  ${container}  IN RANGE  ${container_length}
+        Log to the console    888${container}
+        Log to the console    777${Azstg["stg2"]["containers"][${container}]}
+        batch_delete_blobs_sample   ${Azstg["stg2"]["connection_string"]}   ${Azstg["stg2"]["containers"][${container}]}
+    END
+
+
+***************************************************************************************************************************************
+FILE NAME : AzureStorageFileDelete.json
+
+
+
+{
+    "stg1": {
+      "name": "nadsdevadlvelysdl",
+      "connection_string": "DefaultEndpointsProtocol=https;AccountName=nadsdevadlvelysdl;AccountKey=GM0SLtUV7rnC/uMcZU3xoRzJMAqjBQabStUfQYWBsTZizAwM12Goe7P2qdW4NSE0QEEjCh6aGrXqkNKBl8NT5Q==;EndpointSuffix=core.windows.net",
+      "containers": [
+        "docspera-ack",
+        "docspera-ack-archive",
+        "docspera-archive",
+        "docspera-dlq",
+        "docspera-error",
+        "dsep"
+      ]
+    },
+    "stg2": {
+      "name": "nadsdevadlvelysdsperadl",
+      "connection_string": "DefaultEndpointsProtocol=https;AccountName=nadsdevadlvelysdsperadl;AccountKey=rMSQIaAhImFzriWFQLT+d5lOq+CzGPSSpeRphgtbUz6+fWdvBOxDhEmH32GeEKzPN3tfn2NGgweVX3WHEl6NLA==;EndpointSuffix=core.windows.net",
+      "containers": [
+        "docspera-ack",
+        "dsep"
+      ]
+    }
+  }
+
+
+  *************************************************************************************************************************************
+  FILE NAME : AzureStorageAccount.py
+
+
+
+from azure.core.exceptions import ResourceExistsError
+from azure.storage.blob import BlobServiceClient
+import os
+
+
+def batch_delete_blobs_sample(conn_string, container_name):
+    # Set the connection string and container name values to initialize the Container Client
+    connection_string = conn_string
+
+    blob_service_client = BlobServiceClient.from_connection_string(conn_str=connection_string)
+    # Create a ContainerClient to use the batch_delete function on a Blob Container
+    container_client = blob_service_client.get_container_client(container_name)
+
+    # List blobs in storage account
+    blob_list = [b.name for b in list(container_client.list_blobs())]
+
+    # Delete blobs
+    # container_client.delete_blobs(*blob_list)
+
+    if len(blob_list) <= 256:
+        container_client.delete_blobs(*blob_list)
+
+    else:
+        start=0
+        end=256
+
+        while end<=len(blob_list):
+             #each time, delete 256 blobs at most
+             container_client.delete_blobs(*blob_list[start:end])
+             start = start + 256
+             end = end + 256
+
+             if start < len(blob_list) and end > len(blob_list):
+                container_client.delete_blobs(*blob_list[start:len(blob_list)])
+
+if __name__ == '__main__':
+    batch_delete_blobs_sample()
+
+
+
+    *******************************************************************************************************************************
+
+
+    robot -v env:dev -s Delete_Container_Files ../dsp_daa_fhir_layering/robot-framework/test-suites
+
+
+    **********************************************************************************************************************************
+
+
+
+
+D$pazuread2021PS
+
+
+
+import groovy.json.JsonSlurperClassic 
+node(label:'dsp-jenkins-infra-validation') {
+    cleanWs()
+    def jenkinsRepo = "d_tool_central_jenkins"
+    def infraRepo = "security_remediation"
+    def robotFrameworkRepo = "root_framework" 
+    def credentialId_mayur	= "0764162962-6467107276-0508748302"
+    def credentialId_vumashan = "29571386410-29571386410-29571386410"
+    def credentialId_dnethaji = "9e0a53bb-88d6-4697-b846-f1bcd55be9eb"
+    def xrayUploader = "../${infraRepo}/Test/robot-framework/Test_Management_Automation/XrayUploader"
+    def output = "Results"
+    stage('Python Robot Framework Tests') {
+        
+                    if (params.UserName == "mayur"){
+                        print "using credentials of user ${params.UserName}"
+                        credential_id = "${credentialId_mayur}"
+                        print "credential assigned"
+                    }else if (params.UserName == "vumashan"){
+                        print "using credentials of user ${params.UserName}"
+                        credential_id = "${credentialId_vumashan}"
+                    }else if (params.UserName == "dnethaji"){
+                        print "using credentials of user ${params.UserName}"
+                        credential_id = "${credentialId_dnethaji}"
+                    }else{
+                        print "INVALID USERNAME"
+                        sh "exit 1"
+                    }
+                    // if (credential_id == "${credentialId_${params.UserName}"){
+                    //     print "credential verified"
+                    // }
+                    dir (infraRepo){
+                        git credentialsId: credential_id, branch:'ISO27001_Security_Remediation', url: "https://sourcecode.jnj.com/scm/asx-nayl/${infraRepo}.git"
+                    }
+                    dir (jenkinsRepo){
+                        git credentialsId: credential_id, branch:'devops-coe', url: "https://sourcecode.jnj.com/scm/asx-nayl/${jenkinsRepo}.git"
+                    }
+                    sh (script:'lsb_release -a')
+                    // sh ('sudo apt-get update -y')
+                    sh('sudo apt-get install -y firefox')
+                    sh (script: 'sudo curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"')
+                    sh (script: 'sudo python3.7 get-pip.py')
+                    sh ('''
+			sudo rm -R -f packages-microsoft*
+                        wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+                        sudo dpkg -i packages-microsoft-prod.deb
+                        sudo apt-get update -y
+                        sudo apt-get install -y powershell
+                        ''')
+                    sh (script:'pip install pdfkit')
+                    // sh (script:'which wkhtmltopdf')
+                    sh (script:"sudo apt-get -y install ./${jenkinsRepo}/resources/wkhtmltox_0.12.6-1.bionic_amd64.deb")
+                    sh (script:'which wkhtmltopdf')
+                    // sh (script: 'readlink -f geckodriver')
+                    sh('sudo rm -f chromedriver*')
+		            sh('sudo rm -f geckodriver*')
+                    sh (script:'sudo apt install -y chromium-browser')
+                    sh (script:'sudo apt install unzip')
+                    sh (script:'wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz')
+                    sh (script:'wget https://chromedriver.storage.googleapis.com/${ChromeDriver}/chromedriver_linux64.zip')
+                    sh (script:'unzip chromedriver_linux64.zip')
+                    sh (script:'tar -xvzf geckodriver*')
+                    sh (script:'chmod +x geckodriver')
+                    sh (script:'chmod +x chromedriver')
+                    sh('sudo mv ./geckodriver  /usr/bin/')
+                    sh('sudo mv ./chromedriver  /usr/bin/')
+                    // sh('sudo ln -s /home/agentadmin/workspace/Team-DevOps/robotframwork_firefox/geckodriver  /usr/bin/geckodriver')
+                    // sh('sudo mv /home/agentadmin/workspace/Team-DevOps/robotframwork_firefox/geckodriver  /usr/bin/geckodriver')
+                    sh(script: 'pip install robotframework')
+                    sh(script: 'pip install tabulate')
+                    sh(script: 'pip install robotframework-seleniumlibrary')
+                    sh(script: 'pip  install robotframework-selenium2library')
+                    sh('pip install webdriver-manager')
+                    sh(script: 'firefox --version')
+            //         dir(output){
+            //         sh(script: "python3.7 -m robot.run -d ./ ../${infraRepo}/robot-framework/test-suites/05StorageAccount.robot")
+            // }
+                    dir(output){
+                        def test_execution = sh(script: "python3.7 -m robot.run -v Env:${Environments} -d ./ ../${infraRepo}/Test/robot-framework/test-suites/05Firewall_and_Virtual_Network/Testing_Subscription_Infradev_AFHS-5309_Allow_Access_Network.robot", returnStatus: true)
+                        sh "echo ${test_execution}"
+                        if (test_execution != 0){
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                // sh "exit 1"
+                        }
+					
+                    }
+				 	def jsondata = readFile file: "api_output.txt"
+                        def lines = jsondata.readLines()
+                        str = generateHtml(lines)  
+                        writeFile file: "TestReport.html", text: "${str}"
+				}
+        
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: pwd()+'/Results/', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])  
+                
+        }
+        
+		stage('Upload Output to Jira xray') {
+        withCredentials([usernamePassword(credentialsId: credential_id, passwordVariable: 'pass', usernameVariable: 'uname')]) {
+            sh(script:'pip install pdfkit bs4 jira python-dateutil tzlocal==2.1 jinja2 pyppeteer openpyxl lxml urllib3 pdfgen')
+            dir (output){
+            sh(script: "python3.7 ${xrayUploader}/xray_uploader.py -r ./output.xml -u $uname -jprj AFHS -jurl https://jira.jnj.com -p $pass -a Add_Result -xtenv Dev -xex ${params.TestExecutionId}")
+            //sh(script: "python3.7 ${xrayUploader}/xray_uploader.py -r ./output.xml -u $uname -jprj AFHS -jurl https://jira.jnj.com -p $pass -a Add_Result -xtenv Dev -nu")
+            
+            }
+        }
+        //cleanWs()
+    }
+
+        //cleanWs()
+}
+
+@NonCPS
+def generateHtml(def props) {
+
+def writer = new StringWriter()  // html is written here by markup builder
+def markup = new groovy.xml.MarkupBuilder(writer)  // the builder
+
+// MAKE OF HTML
+markup.html{
+    markup.head{
+    markup.style(type:"text/css", '''
+    .header {
+        color: white;
+        margin: 30px;
+        padding: 10px;
+        background-color: #625eac
+    }
+      .row {
+        margin: 30px;
+        padding: 10px;
+        background-color:  #b3f0ff
+    }
+    .nowrap{
+    }
+    ''')
+  }
+  for (def data in props) {
+    markup.pre(class:"nowrap", data) 
+    markup.br()
+  }//foreach
+
+}
+
+return writer.toString()
+  
+}

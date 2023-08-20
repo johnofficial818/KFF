@@ -1,0 +1,126 @@
+{
+  "signup": [
+    {
+      "name": "john babu",
+      "email": "johnofficial818@gmail.com",
+      "password": "8190890599",
+      "number": "8190890599",
+      "address": "kalakad",
+      "id": 1
+    },
+    {
+      "name": "karthi",
+      "email": "karthikakrishnan953@gmail.com",
+      "password": "123456789",
+      "building": "7/49",
+      "Location": "kalakad",
+      "district": "tirunelveli",
+      "State": "tamil nadu",
+      "id": 2
+    },
+    {
+      "name": "nandhu",
+      "email": "nandhini67@gmail.com",
+      "password": "nandi",
+      "building": "7/49",
+      "Location": "kalakad",
+      "district": "tirunelveli",
+      "State": "tamil nadu",
+      "id": 4
+    },
+    {
+      "name": "jk",
+      "email": "jillunuorujohn824@gmail.com",
+      "password": "123",
+      "building": "7/49",
+      "Location": "kalakad",
+      "district": "tirunelveli",
+      "State": "tamil nadu",
+      "id": 5
+    },
+    {
+      "name": "JK Hotel",
+      "email": "jk@gmail.com",
+      "password": "123",
+      "building": "7/49",
+      "Location": "kalakad",
+      "district": "tirunelveli",
+      "State": "tamil nadu",
+      "id": 6
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "building": "",
+      "Location": "",
+      "district": "",
+      "State": "",
+      "id": 7
+    }
+  ],
+  "value": [
+    {
+      "additem": "chicken",
+      "price": "50",
+      "id": 1
+    }
+  ],
+  "reghotels": [
+    {
+      "hotelname": "JB Hotel",
+      "email": "johnofficial818@gmail.com",
+      "password": "8190890599",
+      "owner": "john",
+      "location": "kalakad",
+      "district": "tirunelveli",
+      "state": "tamil nadu",
+      "mobile": "8190890599",
+      "id": 1
+    },
+    {
+      "hotelname": "SARAVANA BHAVAN",
+      "email": "srb@gmail.com",
+      "password": "123",
+      "Owner": "saravanan",
+      "Location": "kalakad",
+      "District": "tirunelveli",
+      "State": "tamil nadu",
+      "Mobile": "7904142439",
+      "id": 2
+    },
+    {
+      "hotelname": "JNS",
+      "email": "jns@gmail.com",
+      "password": "123",
+      "Owner": "john",
+      "Location": "kkd",
+      "District": "tirunelveli",
+      "State": "tamil nadu",
+      "Mobile": "7904142439",
+      "id": 3
+    },
+    {
+      "hotelname": "Ruchi Hotel",
+      "email": "rh@gmail.com",
+      "password": "123",
+      "Owner": "raja",
+      "Location": "kalakad",
+      "District": "tirunelveli",
+      "State": "tamil nadu",
+      "Mobile": "7904142439",
+      "id": 4
+    },
+    {
+      "hotelname": "AMMA mess",
+      "email": "ammamess@gmail.com",
+      "password": "123",
+      "Owner": "jayalalitha",
+      "Location": "kalakad",
+      "District": "tirunelveli",
+      "State": "tamil nadu",
+      "Mobile": "8190890599",
+      "id": 5
+    }
+  ]
+}

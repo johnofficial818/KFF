@@ -1,0 +1,55 @@
+.text{
+  color: coral;
+  font-size: 50px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  outline-width: 80px ;
+  outline-color: black;
+}
+
+.card{
+  position:absolute;
+  left:500px;
+  bottom:100px;
+right:500px;
+top:80px;
+text-align: center;
+border-radius: 25px;
+}
+
+mat-grid-tile {
+  background-image: url("src\assets\white-abstract-orange-background-eps-10-vector-23527052.jpg");  
+}
+
+.card{
+  /* background-image: url(src\assets\Copy20.jpg); */
+  position:absolute;
+  left:550px;
+  bottom:100px;
+right:550px;
+top:80px;
+text-align: center;
+border-radius: 40px;
+color:black;
+}
+
+.card .example-container{
+    margin-top:40px;
+    margin-left: 50px;
+    margin-right:50px ;
+}
+
+.card .button{
+    padding-left:100px;
+    padding-right:100px;
+}
+
+.card .button2{
+  padding-left:80px;
+  padding-right:80px;
+}
+
+.top{
+  margin-top: 10px;
+  padding-left: 56px;
+  padding-right: 56px;
+}

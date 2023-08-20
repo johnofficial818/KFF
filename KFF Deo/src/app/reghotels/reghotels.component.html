@@ -1,0 +1,105 @@
+<mat-grid-list cols="2" rowHeight="2:2">
+  <mat-grid-tile>
+    <div class="formalign">
+      <form #submit="ngForm">
+        <div class="center" class="col-sm-4	.col-md-6	.col-lg-8	.col-xl-10">
+          <h1>REGISTRATION FORM</h1>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Hotel name</mat-label>
+            <input type="text" matInput [(ngModel)]="hotelregistration.hotelname" name="hotelname" required>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>email</mat-label>
+            <input type="email" matInput [(ngModel)]="hotelregistration.email" name="email" required>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="hotelregistration.password" name="password"
+              required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Owner</mat-label>
+            <input type="text" matInput [(ngModel)]="hotelregistration.Owner" name="Owner" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <input type="text" matInput [(ngModel)]="hotelregistration.Location" name="Location" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>District</mat-label>
+            <input type="text" matInput [(ngModel)]="hotelregistration.District" name="District" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>State</mat-label>
+            <input type="text" matInput [(ngModel)]="hotelregistration.State" name="State" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Mobile</mat-label>
+            <input type="text" matInput [(ngModel)]="hotelregistration.Mobile" name="Mobile" required>
+          </mat-form-field>
+        </div>
+
+        <br>
+        <div class="cent">
+          <button mat-raised-button color="accent" routerLink='/addnewhotel' (click)="hotelreg(submit.value)"
+            [disabled]="!submit.valid">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+  </mat-grid-tile>
+
+  <!-- login page -->
+
+  <mat-grid-tile>
+    <form #loginform="ngForm">
+      <div class="center" class="col-sm-4	.col-md-6	.col-lg-8	.col-xl-10">
+        <div class="example-container">
+          <h1>LOGIN FORM</h1>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" ngModel name="email" required>
+          </mat-form-field>
+        </div>
+
+        <div class="example">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <br>
+      <div class="cent">
+        <button mat-raised-button color="accent" routerLink='/addnewhotel' (click)="hotellogin(loginform.value)"
+          [disabled]="!loginform.valid">Login</button>
+      </div>
+    </form>
+  </mat-grid-tile>
+</mat-grid-list>
+
+

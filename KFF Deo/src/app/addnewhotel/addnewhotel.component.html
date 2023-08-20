@@ -1,0 +1,38 @@
+<form #admit="ngForm" >
+ <section class="container border mb-4 p-3" >
+    <div class="row">
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Add item </mat-label>
+        <input matInput placeholder="Ex. Chicken" ngModel name="additem" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Price </mat-label>
+        <input matInput placeholder="Ex. Rs.50" ngModel name="price" required>
+      </mat-form-field>
+
+      
+      <button mat-stroked-button color="warn" (click)="submit(admit.value)" [disabled]="!admit.valid"> + </button>
+      <!-- <button mat-stroked-button color="warn" (click)="removedish(i)">  - </button> -->
+
+    </div>
+  </section>
+</form>
+<!-- 
+{{value.additem | json}}
+{{value.price | json}} -->
+<table>
+  <tr>
+    <th>Items</th>
+    <th>Price</th>
+  </tr>
+
+  <tr>
+    <td >{{value?.additem }}</td>
+    <td >{{value?.price }}</td>
+  </tr>
+</table>
+
+<!-- *ngFor="let dish of dishes; let i = index;" -->
+{{ dataofreg | json }}

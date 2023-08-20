@@ -1,0 +1,463 @@
+{
+    "url": "https://dsnpdstgdevredox.blob.core.windows.net/from-redox/bundle-transaction-21509000723.json?sp=racwl&st=2022-05-20T18:32:38Z&se=2022-11-21T03:32:38Z&spr=https&sv=2020-08-04&sr=c&sig=GGFowXhPqDJgK%2BhHbDdM1vr92VTj%2F59NzITSRfvaa%2FE%3D",
+    "method": "PUT",
+    "json": true,
+    "isOnPrem": false,
+    "body": {
+      "entry": [
+        {
+          "fullUrl": "urn:uuid:4cf252a4-cc31-48a5-8e19-19c853e5568c",
+          "request": {
+            "method": "POST",
+            "url": "Patient"
+          },
+          "resource": {
+            "resourceType": "Patient",
+            "identifier": [
+              {
+                "value": "0000000001",
+                "system": "urn:redox:7ce6f387-c33c-417d-8682-81e83628cbd9:MR"
+              },
+              {
+                "value": "e167267c-16c9-4fe3-96ae-9cff5703e90a",
+                "system": "urn:redox:7ce6f387-c33c-417d-8682-81e83628cbd9:EHRID"
+              },
+              {
+                "value": "a1d4ee8aba494ca",
+                "system": "urn:redox:7ce6f387-c33c-417d-8682-81e83628cbd9:NIST"
+              },
+              {
+                "value": "101-01-0001",
+                "system": "http://hl7.org/fhir/sid/us-ssn"
+              }
+            ],
+            "birthDate": "2008-01-06",
+            "telecom": [
+              {
+                "value": "+18088675301",
+                "system": "phone",
+                "use": "home"
+              }
+            ],
+            "address": [
+              {
+                "line": [
+                  "4762 Hickory Street"
+                ],
+                "city": "Monroe",
+                "district": "Green",
+                "state": "WI",
+                "postalCode": "53566",
+                "country": "US",
+                "use": "home"
+              }
+            ],
+            "name": [
+              {
+                "use": "official",
+                "family": "Bixby",
+                "given": [
+                  "Timothy",
+                  "Paul"
+                ]
+              }
+            ],
+            "gender": "male",
+            "maritalStatus": {
+              "text": "Single",
+              "coding": [
+                {
+                  "code": "S",
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+                  "display": "Never Married"
+                }
+              ]
+            },
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+                "extension": [
+                  {
+                    "url": "text",
+                    "valueString": "White"
+                  },
+                  {
+                    "url": "ombCategory",
+                    "valueCoding": {
+                      "code": "2106-3",
+                      "system": "urn:oid:2.16.840.1.113883.6.238",
+                      "display": "White"
+                    }
+                  }
+                ]
+              }
+            ],
+            "communication": [
+              {
+                "language": {
+                  "text": "en",
+                  "coding": [
+                    {
+                      "code": "en",
+                      "system": "urn:ietf:bcp:47"
+                    }
+                  ]
+                }
+              }
+            ],
+            "managingOrganization": {
+              "reference": "Organization/1"
+            }
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:54639269-5aee-4032-b5c6-cf50f4242fd7",
+          "request": {
+            "method": "POST",
+            "url": "Encounter"
+          },
+          "resource": {
+            "resourceType": "Encounter",
+            "identifier": [
+              {
+                "value": "1234",
+                "system": "urn:redox:7ce6f387-c33c-417d-8682-81e83628cbd9:VIS"
+              }
+            ],
+            "status": "unknown",
+            "class": {
+              "code": "UNK",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+              "display": "unknown"
+            },
+            "subject": {
+              "reference": "urn:uuid:4cf252a4-cc31-48a5-8e19-19c853e5568c"
+            },
+            "period": {
+              "start": "2022-08-31T14:50:27.203Z"
+            }
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:c2291e72-f558-4d41-9aae-d1825de36899",
+          "request": {
+            "method": "POST",
+            "url": "AllergyIntolerance"
+          },
+          "resource": {
+            "resourceType": "AllergyIntolerance",
+            "clinicalStatus": {
+              "text": "Active",
+              "coding": [
+                {
+                  "code": "active",
+                  "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+                  "display": "Active"
+                }
+              ]
+            },
+            "code": {
+              "coding": [
+                {
+                  "code": "unknown",
+                  "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+                  "display": "unknown"
+                }
+              ]
+            },
+            "patient": {
+              "reference": "urn:uuid:4cf252a4-cc31-48a5-8e19-19c853e5568c"
+            },
+            "encounter": {
+              "reference": "urn:uuid:54639269-5aee-4032-b5c6-cf50f4242fd7"
+            },
+            "reaction": [
+              {
+                "manifestation": [
+                  {
+                    "text": "Rash",
+                    "coding": [
+                      {
+                        "code": "28926001"
+                      }
+                    ]
+                  }
+                ],
+                "description": "Rash"
+              },
+              {
+                "manifestation": [
+                  {
+                    "text": "Hives",
+                    "coding": [
+                      {
+                        "code": "247472004"
+                      }
+                    ]
+                  }
+                ],
+                "description": "Hives"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:a0fcfa8e-f4db-4d01-b283-5bd9b06a3e24",
+          "request": {
+            "method": "POST",
+            "url": "MedicationRequest"
+          },
+          "resource": {
+            "resourceType": "MedicationRequest",
+            "subject": {
+              "reference": "urn:uuid:4cf252a4-cc31-48a5-8e19-19c853e5568c"
+            },
+            "intent": "order",
+            "encounter": {
+              "reference": "urn:uuid:54639269-5aee-4032-b5c6-cf50f4242fd7"
+            },
+            "medicationCodeableConcept": {
+              "text": "Ondansetron 4 Mg Po Tbdp",
+              "coding": [
+                {
+                  "code": "104894",
+                  "system": "http://www.nlm.nih.gov/research/umls/rxnorm"
+                }
+              ]
+            },
+            "dosageInstruction": [
+              {
+                "timing": {
+                  "repeat": {
+                    "frequency": 1,
+                    "periodUnit": "h",
+                    "period": 8,
+                    "boundsPeriod": {
+                      "start": "2022-08-30T20:54:10.661Z"
+                    }
+                  }
+                },
+                "route": {
+                  "text": "Oral",
+                  "coding": [
+                    {
+                      "code": "C38288",
+                      "system": "urn:oid:2.16.840.1.113883.3.26.1.1"
+                    }
+                  ]
+                },
+                "doseAndRate": [
+                  {
+                    "doseQuantity": {
+                      "value": 4,
+                      "unit": "mg"
+                    }
+                  }
+                ]
+              }
+            ],
+            "dispenseRequest": {
+              "performer": {
+                "reference": "urn:uuid:0f940e33-985b-43d3-854d-75ab7a3092e2"
+              }
+            },
+            "status": "active",
+            "requester": {
+              "reference": "urn:uuid:b1aa863b-745d-4caf-b007-d73f5f2db813"
+            },
+            "identifier": [
+              {
+                "value": "cbd8bfe3-da05-4c63-892a-e0f5a5b0c24c",
+                "system": "urn:redox:7ce6f387-c33c-417d-8682-81e83628cbd9:MedOrderID"
+              }
+            ],
+            "recorder": {
+              "reference": "urn:uuid:5a778c3c-3638-4efd-beb4-e2a9a4021566"
+            }
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:0f940e33-985b-43d3-854d-75ab7a3092e2",
+          "request": {
+            "method": "POST",
+            "url": "Organization"
+          },
+          "resource": {
+            "resourceType": "Organization",
+            "active": true,
+            "name": "Fake Pharmacy",
+            "type": [
+              {
+                "text": "Pharmacy",
+                "coding": [
+                  {
+                    "code": "PHARM",
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                    "display": "Pharmacy"
+                  }
+                ]
+              }
+            ],
+            "address": [
+              {
+                "line": [
+                  "123 Fake Street"
+                ],
+                "city": "Madison",
+                "state": "WI",
+                "postalCode": 53703
+              }
+            ],
+            "identifier": [
+              {
+                "system": "urn:redox:7ce6f387-c33c-417d-8682-81e83628cbd9:NCPDP",
+                "value": "1234567"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:b1aa863b-745d-4caf-b007-d73f5f2db813",
+          "request": {
+            "method": "POST",
+            "url": "Practitioner"
+          },
+          "resource": {
+            "resourceType": "Practitioner",
+            "active": true,
+            "identifier": [
+              {
+                "value": "4356789876",
+                "system": "http://hl7.org/fhir/sid/us-npi"
+              }
+            ],
+            "telecom": [
+              {
+                "value": "+16085551234",
+                "system": "phone",
+                "use": "work"
+              }
+            ],
+            "address": [
+              {
+                "line": [
+                  "123 Main St."
+                ],
+                "city": "Madison",
+                "district": "Dane",
+                "state": "WI",
+                "postalCode": "53703",
+                "country": "USA"
+              }
+            ],
+            "name": [
+              {
+                "use": "official",
+                "family": "Granite",
+                "given": [
+                  "Pat"
+                ]
+              }
+            ],
+            "qualification": [
+              {
+                "code": {
+                  "text": "MD",
+                  "coding": [
+                    {
+                      "code": "MD",
+                      "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                      "display": "Doctor of Medicine"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "urn:uuid:5a778c3c-3638-4efd-beb4-e2a9a4021566",
+          "request": {
+            "method": "POST",
+            "url": "Practitioner"
+          },
+          "resource": {
+            "resourceType": "Practitioner",
+            "active": true,
+            "identifier": [
+              {
+                "value": "4356789876",
+                "system": "http://hl7.org/fhir/sid/us-npi"
+              }
+            ],
+            "telecom": [
+              {
+                "value": "+16085551234",
+                "system": "phone",
+                "use": "work"
+              }
+            ],
+            "address": [
+              {
+                "line": [
+                  "123 Main St."
+                ],
+                "city": "Madison",
+                "district": "Dane",
+                "state": "WI",
+                "postalCode": "53703",
+                "country": "USA"
+              }
+            ],
+            "name": [
+              {
+                "use": "official",
+                "family": "Granite",
+                "given": [
+                  "Pat"
+                ]
+              }
+            ],
+            "qualification": [
+              {
+                "code": {
+                  "text": "MD",
+                  "coding": [
+                    {
+                      "code": "MD",
+                      "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                      "display": "Doctor of Medicine"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "_type": {
+        "extension": [
+          {
+            "url": "https://fhir.redoxengine.com/StructureDefinition/data-model",
+            "valueCode": "Medications"
+          },
+          {
+            "url": "https://fhir.redoxengine.com/StructureDefinition/event-type",
+            "valueCode": "New"
+          }
+        ]
+      },
+      "type": "transaction",
+      "meta": {
+        "lastUpdated": "2022-08-30T20:54:10.663Z"
+      },
+      "id": "bundle-transaction-21509000723",
+      "resourceType": "Bundle"
+    },
+    "headers": {
+      "content-type": "application/json",
+      "x-powered-by": "Redox",
+      "x-ms-blob-type": "BlockBlob",
+      "x-ms-client-request-id": "21509000723"
+    }
+  }

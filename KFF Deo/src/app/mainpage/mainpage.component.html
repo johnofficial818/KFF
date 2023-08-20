@@ -1,0 +1,24 @@
+<app-header (menuChange)="drawer.toggle()"></app-header>
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer [mode]="'side'">
+        
+        <app-sidebar (menuChange)="drawer.toggle()"></app-sidebar>
+        <!-- add side bar contents here -->
+<br>
+
+
+    </mat-drawer>
+    <mat-drawer-content class="content-height">
+
+
+
+        <router-outlet> </router-outlet>
+
+       
+
+    </mat-drawer-content>
+
+
+
+</mat-drawer-container>
+<app-footer></app-footer>

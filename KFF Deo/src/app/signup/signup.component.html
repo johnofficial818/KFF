@@ -1,0 +1,61 @@
+
+
+<div class="center">
+
+<form #admit="ngForm" (ngSubmit)="sign(admit.value)">
+  <!-- <form #formdemo="ngForm" (ngSubmit)="onSubmit(formdemo, userData)" > -->
+
+    <mat-form-field>
+      <mat-label>Enter name</mat-label>
+      <input matInput  ngModel name="name" required>
+    </mat-form-field>
+  
+    <br>
+
+      <mat-form-field >
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" ngModel name="email" required>
+      </mat-form-field>
+
+<br>
+    
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    
+<br>
+
+    <mat-form-field >
+      <mat-label FormControlName="building">building no.</mat-label>
+      <input matInput ngModel name="building" required>
+    </mat-form-field>
+
+  <br>
+
+    <mat-form-field>
+      <mat-label>Location</mat-label>
+      <input type="text" matInput ngModel name="Location" required>
+    </mat-form-field> 
+<br>
+    <mat-form-field>
+      <mat-label>district</mat-label>
+      <input type="text" matInput ngModel name="district" required>
+    </mat-form-field> 
+<br>
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <input type="text" matInput ngModel name="State"required>
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button type="submit" color="warn" [disabled]="!admit.valid" >Submit</button>
+
+
+  </form> 
+</div>

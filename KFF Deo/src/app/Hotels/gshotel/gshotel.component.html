@@ -1,0 +1,44 @@
+<!-- if mat-card need then add 
+if not need then remove -->
+
+<mat-card>
+
+  <br>
+
+  <h1><b>{{hotelName}}</b></h1>
+
+
+  <div
+    style="background-image: url('https://images.ricardocuisine.com/services/recipes/1074x1074_5489-background.jpg')">
+    <table>
+
+      <tr>
+        <th>RECIEPES</th>
+        <th>PRICE</th>
+        <th>SELECT</th>
+      </tr>
+
+      <tr *ngFor="let object of itemObjects">
+        <td><b>{{object.id}}</b></td>
+        <td><b>{{object.item}}</b></td>
+        <td><b>{{object.price}}</b></td>
+        <td>
+          <!-- <input type="number"> -->
+          <input type="number" #itemcount (input)="onKey(itemcount.value,object)" [value]='0'>
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td><b class="bold">Total Amount : {{sum}}</b></td>
+        <td> <button (click)="order()" mat-raised-button color="warn">Order Now</button>
+        </td>
+      </tr>
+
+    </table>
+
+
+
+  </div>
+</mat-card>
